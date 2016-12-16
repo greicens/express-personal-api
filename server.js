@@ -51,7 +51,8 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/projects", description: "Sends all projects as JSON"},
-      {method: "POST", path: "/api/projects", description: "Add a new project do the database"}
+      {method: "POST", path: "/api/projects", description: "Add a new project do the database"},
+      {method: "GET", path: "/api/projects/:id", description: "Sends one project as JSON"}
     ]
   })
 });
@@ -88,7 +89,7 @@ app.get('/api/projects/:id', function(req, res){
 });
 
 //post a new project (add one project to da database)
-app.post('/api/project', function(req, res){
+app.post('/api/projects', function(req, res){
   var newProject = new db.Project(req.body);
 
   newProject.save(function(err, savedProject){
