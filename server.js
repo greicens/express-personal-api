@@ -63,7 +63,7 @@ app.get('/api/profile', function api_profile(req, res){
     githubUsername: 'greicens',
     githubLink: 'https://github.com/greicens',
     githubProfileImage: 'https://avatars2.githubusercontent.com/u/8587524?v=3&s=400',
-    personalSiteLink: 'https://greicens.github.io/greicens-Project-0.github.io/',
+    personalSiteLink: 'https://greicens.github.io/',
     currentCity: 'San Francisco',
     pets: []
   });
