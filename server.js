@@ -52,8 +52,11 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/projects", description: "Sends all projects as JSON"},
+      {method: "GET", path: "/api/projects/:id", description: "Sends one project as JSON"},
       {method: "POST", path: "/api/projects", description: "Add a new project do the database"},
-      {method: "GET", path: "/api/projects/:id", description: "Sends one project as JSON"}
+      {method: "PATCH" path: "/api/projects/:id", description: "Updates project atributes"},
+      {method: "DELETE" path: "/api/projects/:id"}
+
     ]
   });
 });
@@ -90,7 +93,7 @@ app.get('/api/projects/:id', function(req, res){
 });
 
 //post a new project (add one project to da database)
-app.post('/api/projects', function(req, res){
+app.post('/api/projects', function add_project(req, res){
   var newProject = new db.Project(req.body);
 
   newProject.save(function(err, savedProject){
@@ -103,24 +106,42 @@ app.post('/api/projects', function(req, res){
   });
 });
 
-//put//change everything about the projects
-//patch//change one single thing.
-
 app.patch('/api/projects/:id', function update_project(req, res){
-  var updatedProject = req.body
   //find the correct project by id
   db.Project.findOne({_id: req.params.id}, function(err, foundProject){
     if(err){
-      response.status(500).send('database error');
-      return console.log('error ', err);
+      res.status(500).send('database error');
     }else{
-      //replace each key of the project with req.body.key || defaut
-      //foundProject.name = req.body.name || foundProject.name;
-      //save in the database
-      res.json()
+      foundProject.name = req.body.name || foundProject.name;
+      foundProject.description = req.body.description || foundProject.description;
+      foundProject.githubRepoUrl = req.body.githubRepoUrl || foundProject.githubRepoUrl;
+      foundProject.deployedUrl = req.body.deployedUrl || foundProject.deployedUrl;
+      foundProject.screenshot = req.body.screenshot || foundProject.screenshot;
+
+      foundProject.save(function(err, savedProject){
+        if(err){
+          res.status(500).send('database error');
+        }else{
+          res.json(foundProject);
+        }
+      });
     }
   });
 });
+
+//DELETE
+
+app.delete('/api/projects/:id', function destroy(req, res){
+
+  db.Project.findOneAndRemove({_id: req.params.id}, function(err, deletedProject){
+    if(err){
+      response.status(500).send('database error');
+    }else{
+      res.json(deletedProject);
+    }
+  });
+});
+
 
 
 
