@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+ var db = require('./models');
 
 /**********
  * ROUTES *
@@ -43,7 +43,6 @@ app.get('/', function homepage(req, res) {
  */
 
 app.get('/api', function api_index(req, res) {
-  // TODO: Document all your api endpoints below
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/greicens/express-personal-api/blob/master/README.md",
@@ -51,11 +50,13 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
-      {method: "POST", path: "/api/projects", description: "Add link to a new project"}
+      {method: "GET", path: "/api/projects", description: "Sends all projects as JSON"},
+      {method: "POST", path: "/api/projects", description: "Add a new project do the database"}
     ]
   })
 });
 
+//route to view profile info
 app.get('/api/profile', function api_profile(req, res){
   res.json({
     name: 'Greice Silva',
@@ -65,9 +66,38 @@ app.get('/api/profile', function api_profile(req, res){
     personalSiteLink: 'https://greicens.github.io/greicens-Project-0.github.io/',
     currentCity: 'San Francisco',
     pets: []
-  })
+  });
+});
+
+//send all projects as JSON response
+app.get('/api/projects', function api_projects(req, res){
+  db.Project.find(function(err, projects){
+    if(err){ return console.log("index error: " + err);}
+    res.json(projects);
+  });
 
 });
+
+//send one specific book id as JSON response
+app.get('/api/projects/:id', function(req, res){
+  var projectId = req.params.id;
+
+  db.Project.findOne({_id: projectId}, function(err, foundProject){
+    res.json(foundProject);
+  });
+});
+
+//post a new project (add one project to da database)
+app.post('/api/project', function(req, res){
+  var newProject = new db.Project(req.body);
+
+  newProject.save(function(err, savedProject){
+    res.json(savedProject);
+  });
+});
+
+
+
 
 /**********
  * SERVER *
