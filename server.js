@@ -44,6 +44,7 @@ app.get('/', function homepage(req, res) {
 
 app.get('/api', function api_index(req, res) {
   res.json({
+    woopsIForgotToDocumentAllMyEndpoints: true,
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/greicens/express-personal-api/blob/master/README.md",
     baseUrl: "http://gsilva.herokuapp.com", // CHANGE ME
@@ -54,7 +55,7 @@ app.get('/api', function api_index(req, res) {
       {method: "POST", path: "/api/projects", description: "Add a new project do the database"},
       {method: "GET", path: "/api/projects/:id", description: "Sends one project as JSON"}
     ]
-  })
+  });
 });
 
 //route to view profile info
@@ -72,7 +73,7 @@ app.get('/api/profile', function api_profile(req, res){
 
 //send all projects as JSON response
 app.get('/api/projects', function api_projects(req, res){
-  db.Project.find(function(err, projects){
+  db.Project.find({}, function(err, projects){
     if(err){ return console.log("index error: " + err);}
     res.json(projects);
   });
@@ -93,7 +94,31 @@ app.post('/api/projects', function(req, res){
   var newProject = new db.Project(req.body);
 
   newProject.save(function(err, savedProject){
-    res.json(savedProject);
+    if(err){
+      response.status(500).send('database error');
+      return console.log('error ', err);
+    }else{
+      res.json(savedProject);
+    }
+  });
+});
+
+//put//change everything about the projects
+//patch//change one single thing.
+
+app.patch('/api/projects/:id', function update_project(req, res){
+  var updatedProject = req.body
+  //find the correct project by id
+  db.Project.findOne({_id: req.params.id}, function(err, foundProject){
+    if(err){
+      response.status(500).send('database error');
+      return console.log('error ', err);
+    }else{
+      //replace each key of the project with req.body.key || defaut
+      //foundProject.name = req.body.name || foundProject.name;
+      //save in the database
+      res.json()
+    }
   });
 });
 
