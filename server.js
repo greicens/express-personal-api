@@ -54,8 +54,8 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/projects", description: "Sends all projects as JSON"},
       {method: "GET", path: "/api/projects/:id", description: "Sends one project as JSON"},
       {method: "POST", path: "/api/projects", description: "Add a new project do the database"},
-      {method: "PATCH" path: "/api/projects/:id", description: "Updates project atributes"},
-      {method: "DELETE" path: "/api/projects/:id"}
+      {method: "PATCH", path: "/api/projects/:id", description: "Updates project atributes"},
+      {method: "DELETE", path: "/api/projects/:id"}
 
     ]
   });
