@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>Greice's Projects API</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -20,24 +20,40 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+        <div id="main" class="col-md-8 col-md-offset-2">
+          <img src="/images/logos.png">
+          <h1>Greice's Projects API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-          <h4>My Projects</h4>
-          <p>Add a new project</p>
-          <form method="POST" action="/api/projects">
-            <input id="projectName" name="name" type="text" placeholder= "Project Name" />
-            <input id="projectDescription" name="description" type="text"  placeholder="Description"/>
-            <input id="githubRepoUrl" name="githubRepoUrl" type="text" placeholder="githubRepoUrl"/>
-            <input id="deployedUrl" name="deployedUrl" type="text" placeholder="deployedUrl"/>
-            <input id="screenshot" name="screenshot" type="text" placeholder="screenshot"/>
-            <input type="submit" />
-          </form>
+
           <div class="">
-            <p></p>
+            <ul class="nav nav-tabs nav-justified navbar-inverse">
+              <li role="presentation" class="active"><a href="#">Overview</a></li>
+              <li role="presentation"><a href="#">Documents</a></li>
+              <li role="presentation"><a href="#">Terms of Use</a></li>
+            </ul>
           </div>
+
+        </div>
+        <div id="secondary" class="col-md-8 col-md-offset-2">
+          <h4>My Projects</h4>
+          <div id ="projectTarget">
+            <!-- handlebars template -->
+            <script id="projects-template" type="text/x-handlebars-template">
+              <hr>
+              <p>
+                <b>{{project.name}}</b> Details: {{project.description}}
+              </p>
+            </script>
+         </div>
+            <p>Add a new project</p>
+           <form id="newProjectForm" method="POST" action="/api/projects">
+             <input id="projectName" name="name" type="text" placeholder= "Project Name" />
+             <input id="projectDescription" name="description" type="text"  placeholder="Description"/>
+             <input id="githubRepoUrl" name="githubRepoUrl" type="text" placeholder="githubRepoUrl"/>
+             <input id="deployedUrl" name="deployedUrl" type="text" placeholder="deployedUrl"/>
+             <input id="screenshot" name="screenshot" type="text" placeholder="screenshot"/>
+             <input type="submit" />
+           </form>
         </div>
       </div>
     </div>

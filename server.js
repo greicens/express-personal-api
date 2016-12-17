@@ -107,7 +107,6 @@ app.post('/api/projects', function add_project(req, res){
 });
 
 app.patch('/api/projects/:id', function update_project(req, res){
-  //find the correct project by id
   db.Project.findOne({_id: req.params.id}, function(err, foundProject){
     if(err){
       res.status(500).send('database error');
@@ -141,9 +140,6 @@ app.delete('/api/projects/:id', function destroy(req, res){
     }
   });
 });
-
-
-
 
 
 /**********
