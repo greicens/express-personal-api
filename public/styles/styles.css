@@ -1,10 +1,27 @@
 body {
-  color: #333;
+  color: #7F460F;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+  color: white;
+  padding: 10px
+}
+
+p{
+  color: #FFF6EC;
+}
+a{
+  color: #D4E1E4;
+}
+img{
+  height: 40px;
+}
+#main{
+  background-color: #285E6A;
+}
+#secondary{
+  background-color: #608C97; /* Sanity Check! */
 }
