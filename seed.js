@@ -16,7 +16,7 @@ var project_list = [
     description: "My first website created at GA",
     githubRepoUrl: "https://github.com/greicens/greicens.github.io.git",
     deployedUrl: "https://greicens.github.io/",
-    screenshot: "/images/personal_website_pic.png"
+    screenshot: "http://images/personal_website_pic.png"
   },
   {
     name: "Tic Tac Toe",

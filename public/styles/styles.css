@@ -16,7 +16,10 @@ p{
 a{
   color: #D4E1E4;
 }
-img{
+.screenshot{
+  width: 300px;
+}
+#logo{
   height: 40px;
 }
 #main{
