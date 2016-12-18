@@ -21,7 +21,7 @@
     <div class="container">
       <div class="row">
         <div id="main" class="col-md-8 col-md-offset-2">
-          <img src="/images/logos.png">
+          <img id ="logo" src="/images/logos.png">
           <h1>Greice's Projects API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
 
@@ -41,8 +41,9 @@
             <script id="projects-template" type="text/x-handlebars-template">
               <hr>
               <p>
-                <b>{{project.name}}</b> Details: {{project.description}}
+                <b>{{project.name}}</b> | {{project.description}}
               </p>
+                <img class="screenshot" src="{{project.screenshot}}">
             </script>
          </div>
             <p>Add a new project</p>
