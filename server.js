@@ -84,7 +84,7 @@ app.get('/api/projects', function api_projects(req, res){
 });
 
 //send one specific book id as JSON response
-app.get('/api/projects/:id', function(req, res){
+app.get('/api/projects/:id', function show_project(req, res){
   var projectId = req.params.id;
 
   db.Project.findOne({_id: projectId}, function(err, foundProject){
@@ -93,7 +93,7 @@ app.get('/api/projects/:id', function(req, res){
 });
 
 //post a new project (add one project to da database)
-app.post('/api/projects', function add_project(req, res){
+app.post('/api/projects', function create_project(req, res){
   var newProject = new db.Project(req.body);
 
   newProject.save(function(err, savedProject){
@@ -130,7 +130,7 @@ app.patch('/api/projects/:id', function update_project(req, res){
 
 //DELETE
 
-app.delete('/api/projects/:id', function destroy(req, res){
+app.delete('/api/projects/:id', function destroy_project(req, res){
 
   db.Project.findOneAndRemove({_id: req.params.id}, function(err, deletedProject){
     if(err){
