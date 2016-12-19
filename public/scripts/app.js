@@ -28,7 +28,6 @@ $(document).ready(function(){
       error: newProjectError
     });
   });
-
 });
 
 function render(){
