@@ -1,5 +1,6 @@
 body {
   color: #7F460F;
+  background-color: black;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -13,18 +14,36 @@ h1 {
 p{
   color: #FFF6EC;
 }
+
 a{
   color: #D4E1E4;
 }
+
+#footer {
+  padding: 10px;
+  background-color: #285E6A;
+  text-align: center;
+
+}
+
 .screenshot{
   width: 300px;
 }
-#logo{
-  height: 40px;
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 8px;
 }
+
 #main{
   background-color: #285E6A;
 }
 #secondary{
-  background-color: #608C97; /* Sanity Check! */
+  background-color: #608C97;
+  text-align: center;
+}
+#side{
+  background-color: #608C97;
+  text-align: center;
 }
