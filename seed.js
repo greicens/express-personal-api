@@ -5,32 +5,25 @@ var db = require('./models');
 
 var project_list = [
   {
-    name: "Memory Game",
-    description: "My first game created with GA Fundamentals instructions",
-    githubRepoUrl: "https://github.com/greicens/wdi-fundamentals-memorygame.git",
-    deployedUrl: "",
-    screenshot: ""
-  },
-  {
     name: "Personal Website",
     description: "My first website created at GA",
     githubRepoUrl: "https://github.com/greicens/greicens.github.io.git",
     deployedUrl: "https://greicens.github.io/",
-    screenshot: "http://images/personal_website_pic.png"
+    screenshot: "images/personal_website_pic.png"
   },
   {
     name: "Tic Tac Toe",
     description: "Simple tic tac toe built using boostrap and event listeners",
     githubRepoUrl: "https://github.com/greicens/tic-tac-toe.git",
     deployedUrl: "",
-    screenshot: ""
+    screenshot: "images/tic_tac_toe.png"
   },
   {
     name: "Project 0",
-    description: "A racing swimming game built using",
+    description: "A racing swimming game built using boostrap and event listeners",
     githubRepoUrl: "https://github.com/greicens/greicens-Project-0.github.io.git",
     deployedUrl: "https://greicens.github.io/greicens-Project-0.github.io/",
-    screenshot: ""
+    screenshot: "images/project0.png"
 
   }
 ];
