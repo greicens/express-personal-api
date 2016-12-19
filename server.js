@@ -70,7 +70,13 @@ app.get('/api/profile', function api_profile(req, res){
     githubProfileImage: 'https://avatars2.githubusercontent.com/u/8587524?v=3&s=400',
     personalSiteLink: 'https://greicens.github.io/',
     currentCity: 'San Francisco',
-    pets: []
+    pets: [],
+    yearOfBirth: 1983,
+    daysOld: function(){
+      var today = new Date();
+      var todayYear = today.getFullYear();
+      return todayYear - this.yearOfBirth;
+    }
   });
 });
 
