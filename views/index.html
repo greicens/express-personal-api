@@ -41,10 +41,11 @@
             <!-- handlebars template -->
             <script id="projects-template" type="text/x-handlebars-template">
               <hr>
-              <p>
-                <b>{{project.name}}</b> | {{project.description}}
-              </p>
-                <img class="screenshot" src="{{project.screenshot}}">
+              <p><b>{{project.name}}</b> | {{project.description}}</p>
+              <img class="screenshot" src="{{project.screenshot}}">
+              <div>
+                <button type="button" name="button" class="deleteBtn btn btn-danger " data-id={{_id}}>Delete</button>
+              </div>
             </script>
          </div>
          <hr>

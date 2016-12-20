@@ -28,6 +28,17 @@ $(document).ready(function(){
       error: newProjectError
     });
   });
+
+  $projectsList.on('click', '.deleteBtn', function(){
+    console.log('clicked delete button to', '/api/projects/'+$(this).attr('data-id'));
+
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/projects/'+$(this).attr('data-id'),
+      sucess: btnSucess,
+      error: btnError
+    });
+  });
 });
 
 function render(){
@@ -64,4 +75,12 @@ function newProjectSucess(json){
 
 function newProjectError(){
   console.log('new project error!');
+}
+
+function btnSucess(json){
+  console.log("project deleted ", json);
+}
+
+function btnError(err){
+  console.log("button deletion error ", err);
 }
