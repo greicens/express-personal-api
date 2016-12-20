@@ -35,7 +35,7 @@ $(document).ready(function(){
     $.ajax({
       method: 'DELETE',
       url: '/api/projects/'+$(this).attr('data-id'),
-      sucess: btnSucess,
+      success: btnSuccess,
       error: btnError
     });
   });
@@ -77,8 +77,17 @@ function newProjectError(){
   console.log('new project error!');
 }
 
-function btnSucess(json){
+function btnSuccess(json){
+  var project = json;
+  var projectId = project._id;
   console.log("project deleted ", json);
+  for(var index = 0; index < allProjects.length; index++) {
+    if(allProjects[index]._id === projectId) {
+      allProjects.splice(index, 1);
+      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+    }
+  }
+  render();
 }
 
 function btnError(err){
